@@ -1,0 +1,21 @@
+(require 'cl-cffi-mikmod)
+(in-package :cl-cffi-mikmod)
+
+
+;; a basic example of sound playing taken from the mikmod docs
+(defun test ()
+  (mikmod-registeralldrivers)
+  (setf *md-mode* (logior *md-mode* dmode-soft-sndfx))
+  (setf *md-mode* (logior *md-mode* dmode-16bits))
+  (mikmod-init "")
+  (let ((sample (sample-load "test.wav")))
+    (mikmod-setnumvoices -1 2) ; not sure what the -1 is for
+    (mikmod-enableoutput)
+
+    (let ((voice-id (sample-play sample 0 0)))
+      (loop
+	 (mikmod-update)
+	 (when (= 1 (voice-stopped voice-id)) (return))
+	 (sleep .01)))
+    (sample-free sample)
+    (mikmod-exit)))

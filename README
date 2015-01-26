@@ -1,0 +1,17 @@
+cl-cffi-mikmod
+--------------
+
+A Common Lisp CFFI Interface to the MikMod library, a high level MOD
+and sound player interface for a variety of platforms.
+
+   http://mikmod.sourceforge.net/
+
+Curently only defines enough of the API to play sound effects (note:
+it only loads mono sample WAV files, stereo gives 'unknown sample
+format' error). See test.lisp for an example.
+
+License: BSD
+
+Burton Samograd
+burton.samograd@gmail.com
+2015
