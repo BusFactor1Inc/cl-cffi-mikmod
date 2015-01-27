@@ -6,9 +6,7 @@ and sound player interface for a variety of platforms.
 
    http://mikmod.sourceforge.net/
 
-Curently only defines enough of the API to play sound effects (note:
-it only loads mono sample WAV files, stereo gives 'unknown sample
-format' error). See test.lisp for an example.
+See test.lisp for small examples.
 
 License: BSD
 
