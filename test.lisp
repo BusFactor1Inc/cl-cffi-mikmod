@@ -19,3 +19,14 @@
 	 (sleep .01)))
     (sample-free sample)
     (mikmod-exit)))
+
+(defun player-test ()
+  (mikmod-registeralldrivers)
+  (mikmod-registerallloaders)
+  (setf *md-mode* (logior *md-mode* dmode-soft-music))
+  (mikmod-init "")
+  (let ((module (player-load "Untitled.xm" 64 0)))
+    (player-start module)
+    (loop (print (player-active) (mikmod-update)) (sleep 0.01))))
+    
+  
